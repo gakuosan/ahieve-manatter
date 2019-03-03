@@ -1,0 +1,27 @@
+<%= form_with(model: @post, local: true ,url: choose_new_or_edit ) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @post.errors.count %>件のエラーが発生したため保存ができませんでした。</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :title, "タイトル" %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :content, "内容" %><br>
+    <%= form.text_area :content, cols: 60, rows: 8 %>
+    <div class= "hint">入力文字数:<span id="char_num">0</span></div>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
