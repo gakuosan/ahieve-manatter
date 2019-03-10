@@ -44,16 +44,16 @@ http_basic_authenticate_with name: "user", password: "secret", except: [:index, 
  
   def confirm
     @post = Post.new(post_params)
-    render :new if @post.invalid?
   end
-  
+
+
   
   private
   
   # @post= Post.find(params[:id])これを切り出すためのメソッドを書く
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:content)
   end
 
   def set_post
