@@ -43,7 +43,7 @@ http_basic_authenticate_with name: "user", password: "secret", except: [:index, 
 
   def destroy
     @post= Post.find(params[:id])
-    @post.destroy(post_params)
+    @post.destroy
     redirect_to posts_path, notice:"投稿を削除しました！"
   end
  
