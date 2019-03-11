@@ -1,3 +1,5 @@
 <h1>新しい投稿</h1>
-   
+ <div class="content">
+      <p class="content"><%= simple_format(@post.content) %></p>
+  </div>
 <%= render 'form' %>
