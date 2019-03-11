@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
 before_action :set_post, only: [:show, :edit, :update]
 
-http_basic_authenticate_with name: "user", password: "secret", except: [:index, :show]
-
 
   def index
     @posts = Post.all.order(created_at: :desc)
