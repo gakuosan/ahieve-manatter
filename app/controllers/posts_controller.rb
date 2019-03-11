@@ -21,8 +21,14 @@ http_basic_authenticate_with name: "user", password: "secret", except: [:index, 
   end
   
   def create
-    Post.create(post_params)
-    redirect_to "/posts/new"
+    @post = Post.new(post_params)
+    if @post.save
+      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
+      redirect_to posts_path, notice: "投稿を作成しました！"
+    else
+      # 入力フォームを再描画します。
+      render 'new'
+    end
   end
 
   def edit
@@ -37,7 +43,7 @@ http_basic_authenticate_with name: "user", password: "secret", except: [:index, 
 
   def destroy
     @post= Post.find(params[:id])
-    @post.destroy
+    @post.destroy(post_params)
     redirect_to posts_path, notice:"投稿を削除しました！"
   end
  
